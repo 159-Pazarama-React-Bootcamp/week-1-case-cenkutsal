@@ -15,6 +15,7 @@
 		<div class="checkout_form">
 			<div class="card_number" id="card-container">
 				<input
+					data-card-number
 					type="text"
 					class="input"
 					id="card"
@@ -23,7 +24,13 @@
 				/>
 				<div id="logo"></div>
 			</div>
-			<div class="btn">Validate</div>
+			<div data-validation-btn class="btn">Validate</div>
+			<div class="status">
+				<div class="card_status">
+					Status:
+					<div data-status class="card_status"></div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

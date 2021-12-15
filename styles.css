@@ -9,7 +9,6 @@
 }
 
 body {
-	background: url("bg.png") no-repeat top center;
 	width: 100%;
 	height: 100vh;
 	background-size: cover;
@@ -47,7 +46,7 @@ input[type="text"] {
 
 .btn {
 	width: 100%;
-	background: #d40e0e;
+	background: #f23942;
 	color: #fff;
 	padding: 10px;
 	border-radius: 3px;
@@ -58,16 +57,18 @@ input[type="text"] {
 	letter-spacing: 5px;
 }
 .btn:hover {
-	background: #9e1111;
+	background: #941d26;
+}
+.status {
+	flex: 1 1 15;
+	padding: 15px 1px;
+	text-align: center;
 }
 
-.btn.error {
-	box-shadow: 0.05em 0.05em 0.25em rgba(170, 117, 117, 0.5) inset;
-	color: #5a0000;
-}
-.btn.verified {
-	border-color: #04c704;
-	box-shadow: 0.05em 0.05em 0.25em rgba(0, 50, 0, 0.3) inset;
+.card_status {
+	padding: 2px;
+	display: inline-block;
+	vertical-align: middle;
 }
 
 ::-webkit-input-placeholder {
@@ -83,7 +84,6 @@ input[type="text"] {
 	color: #064887;
 }
 
-/* Credit Card Validator */
 #card-container {
 	position: relative;
 	width: 100%;

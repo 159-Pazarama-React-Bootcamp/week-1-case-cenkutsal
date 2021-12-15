@@ -42,12 +42,12 @@ hyphenRemover = card => {
 const isCreditCardNumberValid = cardNumber => {
 	let isValid = true
 
-	//Checks the luhn algorithm for card number
+	//Checks the luhn algorithm for card number (Bonus)
 	if (!checkLuhn(cardNumber)) {
 		isValid = false
 	}
 
-	//Remove hyphens if they exist
+	//Remove hyphens if they exist (Bonus)
 	if (cardNumber.toString().includes("-")) {
 		cardNumber = hyphenRemover(cardNumber)
 	}
@@ -80,16 +80,24 @@ const isCreditCardNumberValid = cardNumber => {
 	return isValid
 }
 
-//Correct Cards (Should Output true)
-console.log(isCreditCardNumberValid(correctCreditCard1))
-console.log(isCreditCardNumberValid(correctCreditCard2))
+//Element Selecting Section
+const validationButton = document.querySelector("[data-validation-btn]")
+const cardNumber = document.querySelector("[data-card-number]")
+const statusText = document.querySelector("[data-status]")
 
-//Incorrect Cards (Should Output false)
-console.log(isCreditCardNumberValid(incorrectCreditCard1))
-console.log(isCreditCardNumberValid(incorrectCreditCard2))
-console.log(isCreditCardNumberValid(incorrectCreditCard3))
-console.log(isCreditCardNumberValid(incorrectCreditCard4))
-
-//Correct Card With Hyphens (Should Output true)
-console.log(isCreditCardNumberValid(cardWithHyphens1))
-console.log(isCreditCardNumberValid(cardWithHyphens2))
+//On validate button click events
+validationButton.addEventListener("click", button => {
+	validationButton.innerText = "Validating..."
+	setTimeout(() => {
+		validationButton.innerText = "Validate"
+		if (isCreditCardNumberValid(cardNumber.value)) {
+			console.log("Credit Card is Valid!")
+			statusText.innerText = "Card is Valid!"
+			statusText.style.color = "#406c35"
+		} else {
+			console.log("Incorrect Credit Card Number")
+			statusText.innerText = "Incorrect Credit Card Number"
+			statusText.style.color = "#f23942"
+		}
+	}, 1000)
+})
