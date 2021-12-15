@@ -1,12 +1,12 @@
 //DUMMY DATA
-const correctCreditCard1 = "9999777788880000"
-const correctCreditCard2 = "6666666666661666"
-const incorrectCreditCard1 = "aaaabbbbccccdddd "
-const incorrectCreditCard2 = "4444444444444444"
-const incorrectCreditCard3 = "1111111111111110"
-const incorrectCreditCard4 = "6666666666666661"
-const cardWithHyphens1 = "9999-7777-8888-0000"
-const cardWithHyphens2 = "6666-6666-6666-1666"
+// const correctCreditCard1 = "9999777788880000"
+// const correctCreditCard2 = "6666666666661666"
+// const incorrectCreditCard1 = "aaaabbbbccccdddd "
+// const incorrectCreditCard2 = "4444444444444444"
+// const incorrectCreditCard3 = "1111111111111110"
+// const incorrectCreditCard4 = "6666666666666661"
+// const cardWithHyphens1 = "9999-7777-8888-0000"
+// const cardWithHyphens2 = "6666-6666-6666-1666"
 
 //Luhn Algorithm
 function checkLuhn(input) {
@@ -42,20 +42,18 @@ hyphenRemover = card => {
 const isCreditCardNumberValid = cardNumber => {
 	let isValid = true
 
-	//Checks the luhn algorithm for card number (Bonus)
-	if (!checkLuhn(cardNumber)) {
-		isValid = false
-	}
-
 	//Remove hyphens if they exist (Bonus)
-	if (cardNumber.toString().includes("-")) {
-		cardNumber = hyphenRemover(cardNumber)
+	const newCardNumber = hyphenRemover(cardNumber)
+
+	//Checks the luhn algorithm for card number (Bonus)
+	if (!checkLuhn(newCardNumber)) {
+		isValid = false
 	}
 
 	//Must be 16 digits and all numbers if not return false
 	if (
-		cardNumber.length != 16 ||
-		cardNumber.split("").every(function (element) {
+		newCardNumber.length != 16 ||
+		newCardNumber.split("").every(function (element) {
 			return typeof element === "number"
 		})
 	) {
@@ -63,17 +61,17 @@ const isCreditCardNumberValid = cardNumber => {
 	}
 
 	//Last element must be even if not return false
-	if (!(cardNumber[cardNumber.length - 1] % 2 == 0)) {
+	if (!(newCardNumber[newCardNumber.length - 1] % 2 == 0)) {
 		isValid = false
 	}
 
 	//Sum of all digits must be greater than 16
-	if (sumStr(cardNumber) < 16) {
+	if (sumStr(newCardNumber) < 16) {
 		isValid = false
 	}
 
 	//Not all numbers can be the same
-	if (isAllDigitsAreSame(cardNumber)) {
+	if (isAllDigitsAreSame(newCardNumber)) {
 		isValid = false
 	}
 
