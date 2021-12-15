@@ -8,6 +8,20 @@ const incorrectCreditCard4 = "6666666666666661"
 const cardWithHyphens1 = "9999-7777-8888-0000"
 const cardWithHyphens2 = "6666-6666-6666-1666"
 
+//Luhn Algorithm
+function checkLuhn(input) {
+	var sum = 0
+	var numdigits = input.length
+	var parity = numdigits % 2
+	for (var i = 0; i < numdigits; i++) {
+		var digit = parseInt(input.charAt(i))
+		if (i % 2 == parity) digit *= 2
+		if (digit > 9) digit -= 9
+		sum += digit
+	}
+	return sum % 10 == 0
+}
+
 //Function that sums all the digits of the string
 sumStr = str => {
 	return str.split("").reduce(function (total, num) {
@@ -16,8 +30,8 @@ sumStr = str => {
 }
 
 //check if all the numbers are same in array
-function isAllDigitsAreSame(num) {
-	return num.split("").every(digit => digit === num[0])
+function isAllDigitsAreSame(cardNumber) {
+	return cardNumber.split("").every(digit => digit === cardNumber[0])
 }
 
 //Hyphen Remover 3000 😂
@@ -27,6 +41,11 @@ hyphenRemover = card => {
 
 const isCreditCardNumberValid = cardNumber => {
 	let isValid = true
+
+	//Checks the luhn algorithm for card number
+	if (!checkLuhn(cardNumber)) {
+		isValid = false
+	}
 
 	//Remove hyphens if they exist
 	if (cardNumber.toString().includes("-")) {
