@@ -1,14 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>159. Patika, Pazarama React Bootcamp - Odev 1</title>
-</head>
-<body>
-
-<script src="index.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>159. Patika, Pazarama React Bootcamp - Odev 1</title>
+		<script defer src="index.js"></script>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<div class="checkout_form">
+			<div class="card_number" id="card-container">
+				<input
+					data-card-number
+					type="text"
+					class="input"
+					id="card"
+					placeholder="0000000000000000"
+				/>
+				<div id="logo"></div>
+			</div>
+			<div data-validation-btn class="btn">Validate</div>
+			<div class="status">
+				<div class="card_status">
+					Status:
+					<div data-status class="card_status"></div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
